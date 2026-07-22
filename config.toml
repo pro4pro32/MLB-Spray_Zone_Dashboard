@@ -1,0 +1,23 @@
+[server]
+# Skip the "did you mean to reload" file-watcher churn in production/cloud
+fileWatcherType = "none"
+runOnSave = false
+maxUploadSize = 50
+enableStaticServing = true
+
+[browser]
+gatherUsageStats = false
+
+[runner]
+fastReruns = true
+
+[client]
+toolbarMode = "minimal"
+
+[theme]
+base = "dark"
+primaryColor = "#2f7cf6"
+backgroundColor = "#0b0f17"
+secondaryBackgroundColor = "#111621"
+textColor = "#e2e8f0"
+font = "sans serif"
