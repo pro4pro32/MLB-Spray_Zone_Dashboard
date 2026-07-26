@@ -1,6 +1,15 @@
+# Streamlit Community Cloud now provisions new/rebuilt apps on Python 3.14
+# by default, and runtime.txt is unreliable for pinning an older Python on
+# Cloud right now (widely reported as ignored). So instead of fighting the
+# platform, these bounds are chosen to guarantee prebuilt (non-source)
+# wheels on Python 3.14:
+#   - pyarrow needs >=22.0 for a cp314 wheel; 17-21 have NO 3.14 wheel and
+#     fall back to a source build, which then fails because the isolated
+#     build env's setuptools has no pkg_resources on 3.14 (root cause of
+#     the deploy log error).
+#   - numpy needs >=2.1 for the same reason (1.26.x predates 3.14 wheels).
 streamlit>=1.36,<2.0
 pandas>=2.2,<3.0
-numpy>=1.26,<2.0
+numpy>=2.1,<3.0
 plotly>=5.22,<6.0
-pyarrow>=17.0,<18.0   # or just pyarrow (latest)
-setuptools<82        # fallback if still needed
+pyarrow>=22.0,<26.0
